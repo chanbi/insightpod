@@ -1,0 +1,315 @@
+table {
+  font-size: 0.9em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table thead tr:first-of-type {
+  border-top: 4px solid #0172ad;
+}
+
+table thead th {
+  white-space: nowrap;
+}
+
+table thead th:has(.dropdown) {
+  padding-right: 0;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--pico-primary-background);
+}
+
+table thead tr th.sm-col {
+  width: 3rem;
+}
+
+table thead tr th.md-col {
+  width: 4.5rem;
+}
+
+table tbody tr.disabled td {
+  color: #999999;
+  text-decoration: line-through;
+}
+
+table tbody tr.disabled td :is(button, [type=submit], [type=button], [role=button]) {
+  --pico-background-color: var(--pico-secondary-background);
+  --pico-border-color: var(--pico-secondary-border);
+  --pico-color: var(--pico-secondary-inverse);
+  cursor: pointer;
+}
+
+table.striped tbody tr:nth-child(odd) {
+  background-color: var(--pico-table-row-stripped-background-color);
+}
+
+table.striped tbody tr:nth-child(odd) td, table.striped tbody tr:nth-child(odd) th {
+  background-color: initial;
+}
+
+@media screen and (max-width: 600px) {
+  table thead tr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  table thead tr th {
+    display: none;
+    flex-grow: 1;
+  }
+
+  table thead tr th:has(.dropdown) {
+    display: initial;
+  }
+
+  table thead tr th.sm-col,
+  table thead tr th.md-col {
+    width: initial;
+  }
+
+  table tbody tr, 
+  table tfoot tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  table tbody tr td,
+  table tfoot tr td {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: initial !important;
+    flex-grow: 1;
+    order: 0;
+  }
+
+  table tbody tr td:has(img),
+  table tbody tr td:has(button) {
+    flex-grow: initial;
+  }
+
+  table tbody tr td img {
+    width: 2.7rem;
+  }
+
+  table tbody tr td[data-label]::before,
+  table tfoot tr td[data-label]::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-wrap: nowrap;
+  }
+
+  table tbody tr::before, 
+  table tbody tr::after,
+  table tfoot tr::before, 
+  table tfoot tr::after {
+    content: '';
+    width: 100%;
+    order: 1;
+  }
+
+  table tfoot tr td:is(:empty) {
+    display: none;
+  }
+
+  table.csv tbody tr td[data-label="Title"]::before,
+  table.feed tbody tr td[data-label="Episode"]::before {
+    content: "";
+  }
+
+  table.csv tbody tr td[data-label="Title"] {
+    order: 0;
+    flex-basis: 50%;
+  }
+
+  table.csv tbody tr td[data-label="Title"] ~ td {
+    order: 1;
+  }
+
+  table.feed tbody tr td {
+    order: 1;
+  }
+
+  table.feed tbody tr td[data-label="Episode"] {
+    order: 0;
+    width: 100%;
+  }
+
+  table.feed tbody tr td[data-label="Episode"] ~ td {
+    order: 1;
+  }
+
+  table.feed tbody tr td:first-child,
+  table.feed tbody tr td[data-label="Episode"] ~ td:last-child {
+    order: 2;
+  }
+
+  table.feed tbody tr td[data-label="Episode"] ~ td:last-child {
+    padding-left: 0;
+    flex-grow: 1;
+  }
+  
+  table.feed tbody tr td[data-label="Episode"] ~ td:last-child button {
+    width: 42px;
+  }
+  
+  table.csv tfoot tr td[data-label="Title"] {
+    order: 0;
+  }
+
+  table.csv tfoot tr td[data-label="Title"]::before,
+  table.feed tfoot tr td[data-label="Episode"]::before {
+    content: "";
+  }
+
+  table.csv tfoot tr td[data-label="Title"] ~ td,
+  table.feed tfoot tr td[data-label="Episode"] ~ td {
+    order: 1;
+  }
+
+  table.csv tbody tr td[data-label="> 60"] ~ td {
+    order: 2;
+  }
+
+  table.csv tbody tr td[data-label="> 60"] ~ td:last-child {
+    padding-left: 0;
+  }
+}
+
+button.icon {
+  padding: calc(var(--pico-nav-link-spacing-vertical) - var(--pico-border-width) * 2) var(--pico-nav-link-spacing-horizontal);
+  line-height: 1;
+}
+
+:is(button, [type=submit], [type=button], [role=button]).secondary {
+  --pico-background-color: var(--pico-secondary-background);
+  --pico-border-color: var(--pico-secondary-border);
+  --pico-color: var(--pico-secondary-inverse);
+  cursor: pointer;
+}
+
+:is(button, [type=submit], [type=button], [role=button]).contrast {
+  --pico-background-color: var(--pico-contrast-background);
+  --pico-border-color: var(--pico-contrast-border);
+  --pico-color: var(--pico-contrast-inverse);
+}
+
+button>span.material-symbols-outlined {
+  align-items: center;
+  vertical-align: middle;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 1rem 0 1rem !important;
+}
+
+header>nav {
+  flex-basis: 100%;
+  flex-direction: row-reverse;
+}
+
+header>nav ul {
+  flex-direction: row-reverse;
+}
+
+nav li {
+  padding: 1rem 0.5rem 0 0.5rem;
+}
+
+.header-image {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 10rem;
+  margin-right: 1rem;
+}
+
+.header-title {
+  align-self: flex-end;
+  margin-top: 1rem;
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .header-image {
+    flex-basis: 5rem;
+  }
+}
+
+article.error {
+  background-color: #F06048;
+  color: #ffffff;
+}
+
+article.error a {
+  --pico-color: var(--pico-contrast);
+  --pico-underline: var(--pico-contrast-underline);
+}
+
+article.error a:hover,
+article.error a:active,
+article.error a:focus {
+  --pico-color: var(--pico-contrast-hover);
+  --pico-underline: var(--pico-contrast-hover-underline);
+}
+
+.nowrap {
+  white-space: nowrap
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus,
+.dropdown-button.active {
+  color: var(--pico-primary-background)
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: 1px solid var(--pico-primary-border);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  text-align: center;
+}
+
+.dropdown-content a {
+  padding: calc(var(--pico-spacing) / 2) var(--pico-spacing);
+  display: block;
+}
+
+.dropdown-content a:hover {
+  filter: brightness(0.9);
+  background-color: white
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 0.8s linear infinite;
+}
