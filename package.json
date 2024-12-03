@@ -1,0 +1,27 @@
+{
+  "name": "insightpod",
+  "private": true,
+  "version": "1.0.1",
+  "author": "Chantal Bisson",
+  "license": "ISC",
+  "description": "",
+  "keywords": [
+    "podcast",
+    "insights",
+    "player",
+    "viewer",
+    "sync"
+  ],
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "https-localhost": "^4.7.1",
+    "simple-git-hooks": "^2.11.1",
+    "taze": "^0.18.0"
+  }
+}
