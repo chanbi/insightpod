@@ -142,7 +142,7 @@ function populatePodcastHeader(podcast) {
   const image = createImageElement(podcast.image.url, podcast.image.title)
   divImg.appendChild(image)
 
-  let title = header.querySelector('.header-title')
+  let title = header.querySelector('.header-title h2')
   title.innerHTML = podcast.title
 }
 
