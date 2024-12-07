@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "release-it-pnpm": {
+      "disableRelease": true
+    }
+  },
+  "git": {
+    "commitMessage": null,
+    "commitArgs": "--amend --no-edit --no-verify",
+    "push": false,
+    "requireCommits": true
+  }
+}
