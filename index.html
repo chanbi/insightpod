@@ -201,7 +201,8 @@
         </li>
         <li>
           <input id="searchInput" type="search" name="filter" placeholder="Filter" aria-label="Filter" oninput="titleFilterValue = this.value
-            const filteredPods = filterPodcastsByTitle(podcasts, titleFilterValue)
+            const filteredHiddenPods = hideHidden ? podcasts.filter((pod) => !pod.hidden) : podcasts
+            const filteredPods = filterPodcastsByTitle(filteredHiddenPods, titleFilterValue)
             redrawHtmlTableBody(document.getElementById('data'), filteredPods, columnDefs)
             filterTable(activeFilters)" />
         </li>
@@ -229,7 +230,11 @@
             savePodcastsToDB(db, opmlMergedWithBd)
               .then((pods) => podcasts = pods)
               .then(() => console.log('Loaded podcasts from OPML file'))
-              .then(() => redrawHtmlTableData(document.getElementById('data'), podcasts, columnDefs))
+              .then(() => {
+                const filteredHiddenPods = hideHidden ? podcasts.filter((pod) => !pod.hidden) : podcasts
+                const filteredPods = filterPodcastsByTitle(filteredHiddenPods, document.getElementById('searchInput').value)
+                redrawHtmlTableData(document.getElementById('data'), filteredPods, columnDefs)
+              })
               .then(() => filterTable(activeFilters))
             })" />
         </li>
@@ -311,7 +316,11 @@
         .then((pods) => savePodcastsToDB(db, pods))
         .then((pods) => podcasts = pods)
         .then(() => console.log('Refreshed all podcast\'s feeds'))
-        .then(() => redrawHtmlTableData(document.getElementById('data'), podcasts, columnDefs))
+        .then(() => {
+          const filteredHiddenPods = hideHidden ? podcasts.filter((pod) => !pod.hidden) : podcasts
+          const filteredPods = filterPodcastsByTitle(filteredHiddenPods, document.getElementById('searchInput').value)
+          redrawHtmlTableData(document.getElementById('data'), filteredPods, columnDefs)
+        })
         .then(() => filterTable(activeFilters))
         .then(() => refreshIcon.classList.remove('spinning'))
     })
