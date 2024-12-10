@@ -19,6 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "https-localhost": "^4.7.1",
     "only-allow": "^1.2.1",
     "release-it": "^17.10.0",
@@ -26,5 +28,10 @@
     "should-semantic-release": "^0.3.0",
     "simple-git-hooks": "^2.11.1",
     "taze": "^0.18.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

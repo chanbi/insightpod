@@ -1,4 +1,5 @@
 {
   "pre-commit": "touch .commit-lock",
+  "commit-msg": "npx --no -- commitlint --edit $1",
   "post-commit": "if [ -e .commit-lock ] ; then rm .commit-lock ; if npx should-semantic-release --verbose ; then npx release-it --ci --verbose ; fi ; fi"
 }
