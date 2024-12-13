@@ -1,3 +1,4 @@
+import PouchDB from 'pouchdb-browser'
 import { getSortedPodcasts } from '@scripts/features'
 import { deepEqual } from '@scripts/utils'
 
