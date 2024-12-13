@@ -1,4 +1,4 @@
-function transformDataForCvs(episodes) {
+export function transformDataForCvs(episodes) {
   const refinedData = []
 
   const titleKeys = ['episode-title', 'publication-date', 'duration']
@@ -24,7 +24,7 @@ function transformDataForCvs(episodes) {
   return refinedData
 }
 
-function createCsv(data) {
+export function createCsv(data) {
   let csvContent = ''
   for (let row of data) {
     csvContent += `${row.join(',')}\n`
@@ -34,7 +34,7 @@ function createCsv(data) {
   return URL.createObjectURL(blob)
 }
 
-function downloadFile(objUrl, filename) {
+export function downloadFile(objUrl, filename) {
   const link = document.createElement('a')
   link.href = objUrl
   link.download = filename

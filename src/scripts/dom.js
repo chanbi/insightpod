@@ -1,4 +1,7 @@
-function populateHtmlTable(list, columnDefs) {
+import { rgbStrToColor, sortColors } from '@scripts/color'
+import { deepEqual } from '@scripts/utils'
+
+export function populateHtmlTable(list, columnDefs) {
   // Create table header
   const table = document.getElementById('data')
   table.innerHTML = ''
@@ -16,7 +19,7 @@ function populateHtmlTable(list, columnDefs) {
       dropdown.className = 'dropdown'
       dropdown.dataset['column'] = columnDef.thFilter
       th.appendChild(dropdown)
-      
+
       const dropBtn = document.createElement('div')
       dropBtn.className = 'dropdown-button'
       dropBtn.textContent = columnDef.thText
@@ -57,7 +60,7 @@ function populateHtmlTable(list, columnDefs) {
   }
 }
 
-function createHtmlTableBodyRows(list, columnDef) {
+export function createHtmlTableBodyRows(list, columnDefs) {
   return list.map((item) => {
     const tr = document.createElement('tr')
     tr.id = 'row_' + item.guid
@@ -72,17 +75,17 @@ function createHtmlTableBodyRows(list, columnDef) {
   })
 }
 
-function redrawHtmlTableBody(table, list, columnDefs) {
+export function redrawHtmlTableBody(table, list, columnDefs) {
   const tbody = table.querySelector('tbody')
   const newTrArray = createHtmlTableBodyRows(list, columnDefs)
   tbody.replaceChildren(...newTrArray)
 }
 
-function redrawHtmlTableFooter(table, columnDefs) {
+export function redrawHtmlTableFooter(table, columnDefs) {
   if (columnDefs.some((columnDef) => columnDef.tfText)) {
     const tfoot = table.querySelector('tfoot')
     const trf = tfoot.querySelector('tr')
-    for (i=0; i<columnDefs.length; i++) {
+    for (let i=0; i<columnDefs.length; i++) {
       const columnDef = columnDefs[i]
       const td = trf.querySelectorAll('td')[i]
       columnDef.tfText ? td.firstChild.replaceWith(document.createTextNode(columnDef.tfText())) : null
@@ -90,19 +93,19 @@ function redrawHtmlTableFooter(table, columnDefs) {
   }
 }
 
-function redrawHtmlTableData(table, list, columnDefs) {
+export function redrawHtmlTableData(table, list, columnDefs) {
   redrawHtmlTableBody(table, list, columnDefs)
   redrawHtmlTableFooter(table, columnDefs)
 }
 
-function createAnchorElement(text, href) {
+export function createAnchorElement(text, href) {
   const linkEl = document.createElement('a')
   linkEl.href = href
   linkEl.appendChild(document.createTextNode(text))
   return linkEl
 }
 
-function createImageElement(src, alt, width) {
+export function createImageElement(src, alt, width) {
   const imgEl = document.createElement('img')
   imgEl.src = src
   imgEl.alt = alt
@@ -110,7 +113,7 @@ function createImageElement(src, alt, width) {
   return imgEl
 }
 
-function createButtonElement(onclickFn, iconName, className = '') {
+export function createButtonElement(onclickFn, iconName, className = '') {
   const buttonEl = document.createElement('button')
   buttonEl.onclick = onclickFn
   className? buttonEl.className = className : null
@@ -123,19 +126,29 @@ function createButtonElement(onclickFn, iconName, className = '') {
   return buttonEl
 }
 
-function setButtonStyle(buttonEl, iconName, className = '') {
+export function setButtonStyle(buttonEl, iconName, className = '') {
   buttonEl = (typeof buttonEl == 'string') ? document.getElementById(buttonEl) : buttonEl
   className? buttonEl.className = className : null
   const iconEl = buttonEl.querySelector('.material-symbols-outlined')
   iconEl.innerHTML = iconName
 }
 
-function setButtonOnClick(btnId, onclickFn) {
+export function setButtonOnClick(btnId, onclickFn) {
   let buttonEl = document.getElementById(btnId)
   buttonEl.onclick = onclickFn
 }
 
-function populatePodcastHeader(podcast) {
+export function setInputOnInput(inputId, oninputFn) {
+  let inputEl = document.getElementById(inputId)
+  inputEl.oninput = oninputFn
+}
+
+export function setInputOnChange(inputId, onchangeFn) {
+  let inputEl = document.getElementById(inputId)
+  inputEl.onchange = onchangeFn
+}
+
+export function populatePodcastHeader(podcast) {
   const header = document.body.querySelector('header')
   let divImg = header.querySelector('.header-image')
 
@@ -146,7 +159,7 @@ function populatePodcastHeader(podcast) {
   title.innerHTML = podcast.title
 }
 
-function populateAlert(error) {
+export function populateAlert(error) {
   let header = document.body.querySelector('header')
   header.innerHTML = `<article class="error">${error.message}<br/><a href="https://cors-anywhere.herokuapp.com/" alt="Request temporary access to CORS Anywhere">Request temporary access to CORS Anywhere</a></article>`
 
@@ -154,12 +167,12 @@ function populateAlert(error) {
   main.innerHTML = ''
 }
 
-function setActiveFilters(activeFilters) {
+export function setActiveFilters(activeFilters) {
   const dropbtns = document.querySelectorAll('.dropdown-button')
   dropbtns.forEach(dropbtn => (activeFilters[dropbtn.parentElement.dataset.column])? dropbtn.classList.add('active') : dropbtn.classList.remove('active'))
 }
 
-function filterTable(activeFilters) {
+export function filterTable(activeFilters) {
   const table = document.getElementById('data')
   const rows = table.querySelectorAll('tbody tr')
   rows.forEach(row => {
@@ -182,7 +195,7 @@ function filterTable(activeFilters) {
   })
 }
 
-function getUniqueBackgroundColors(column) {
+export function getUniqueBackgroundColors(column) {
   const uniqueValues = new Set()
   const rows = document.getElementById('data').querySelectorAll('tbody tr');
   rows.forEach(row => uniqueValues.add(row.cells[column - 1].style.backgroundColor))

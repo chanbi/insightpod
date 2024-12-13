@@ -1,16 +1,16 @@
-function escapeCdata(text) {
+export function escapeCdata(text) {
   return text.trim().replace(/^(\/\/\s*)?<!\[CDATA\[|(\/\/\s*)?\]\]>$/g, '')
 }
 
-function escapeAmp(text) {
+export function escapeAmp(text) {
   return text.trim().replace(/&amp;/g, '&')
 }
 
-function strToCamelCase(str) {
+export function strToCamelCase(str) {
   return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
 }
 
-function strToHash(str) {
+export function strToHash(str) {
   if (str) {
     for (var i = str.length, hash = 9; i;) {
       hash = Math.imul(hash ^ str.charCodeAt(--i), 9 ** 9)
@@ -19,7 +19,7 @@ function strToHash(str) {
   }
 }
 
-function mergeArrays(arr1, arr2, predicate) {
+export function mergeArrays(arr1, arr2, predicate) {
   return [...(arr1 || []), ...(arr2 || [])]
     .reduce((arr3, obj) => {
       const index = arr3.findIndex(item => predicate(item, obj))
@@ -32,7 +32,7 @@ function mergeArrays(arr1, arr2, predicate) {
     }, [])
 }
 
-function deepEqual(object1, object2) {
+export function deepEqual(object1, object2) {
   const keys1 = Object.keys(object1)
   const keys2 = Object.keys(object2)
 

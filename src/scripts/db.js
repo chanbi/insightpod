@@ -1,4 +1,7 @@
-function openPodcastsDB() {
+import { getSortedPodcasts } from '@scripts/features'
+import { deepEqual } from '@scripts/utils'
+
+export function openPodcastsDB() {
   const db = new PouchDB('PodcastsDB', { auto_compaction: true })
 
   db.info().then((info) => {
@@ -8,7 +11,7 @@ function openPodcastsDB() {
   return db
 }
 
-function getAllPodcastsFromDB(db) {
+export function getAllPodcastsFromDB(db) {
   return db.allDocs({ include_docs: true })
     .then((result) => {
       const docs = result.rows.map((row) => row.doc)
@@ -21,7 +24,7 @@ function getAllPodcastsFromDB(db) {
     })
 }
 
-function savePodcastsToDB(db, podcasts) {
+export function savePodcastsToDB(db, podcasts) {
   console.debug(`Saving ${JSON.stringify(podcasts)}`)
   return db.allDocs({ include_docs: true })
     .then((result) => {
@@ -77,7 +80,7 @@ function savePodcastsToDB(db, podcasts) {
     })
 }
 
-function getPodcastFromDB(db, id) {
+export function getPodcastFromDB(db, id) {
   return db.get(id)
     .then((result) => {
       console.debug(`PodcastsDB get: ${JSON.stringify(result)}`)
@@ -88,7 +91,7 @@ function getPodcastFromDB(db, id) {
     })
 }
 
-function savePodcastToDB(db, podcast) {
+export function savePodcastToDB(db, podcast) {
   console.debug(`Saving ${JSON.stringify(podcast)}`)
   return db.put(podcast)
     .then((result) => {

@@ -1,4 +1,6 @@
-function readFile(onloadFn) {
+import { strToHash, escapeAmp } from '@scripts/utils'
+
+export function readFile(onloadFn) {
   const [file] = document.querySelector('input[type=file]').files
   const reader = new FileReader()
 
@@ -11,7 +13,7 @@ function readFile(onloadFn) {
   }
 }
 
-function parseOpmlPodcastList(text) {
+export function parseOpmlPodcastList(text) {
   const podcastList = []
 
   const parser = new DOMParser()

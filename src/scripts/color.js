@@ -36,12 +36,6 @@ const gyrColors = [
   { r: 255, g: 0, b: 0 }     // Red
 ]
 
-function applyColorScale(value, minValue = 0, maxValue = 100, colors = gyrColors) {
-  const colorScale = new ColorScale(minValue, maxValue, colors)
-  const color = colorScale.getColor(value)
-  return `background-color: ${color};`
-}
-
 function rgbToHsl(r, g, b) {
   r /= 255
   g /= 255
@@ -67,15 +61,21 @@ function rgbToHsl(r, g, b) {
   return [h * 360, s * 100, l * 100]
 }
 
-function rgbStrToColor(str) {
-  return { 
+export function applyColorScale(value, minValue = 0, maxValue = 100, colors = gyrColors) {
+  const colorScale = new ColorScale(minValue, maxValue, colors)
+  const color = colorScale.getColor(value)
+  return `background-color: ${color};`
+}
+
+export function rgbStrToColor(str) {
+  return {
     r: parseInt(str.match(/\d+/g)[0]),
     g: parseInt(str.match(/\d+/g)[1]),
     b: parseInt(str.match(/\d+/g)[2])
   }
 }
 
-function sortColors(c1, c2) {
+export function sortColors(c1, c2) {
   const [h1, s1, l1] = rgbToHsl(c1.r, c1.g, c1.b)
   const [h2, s2, l2] = rgbToHsl(c2.r, c2.g, c2.b)
   if (h1 !== h2) return h2 - h1

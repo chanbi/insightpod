@@ -28,8 +28,9 @@ InsightPod is a web application that helps you choose your next podcast or audio
 
 Clone the new repo into a local repository and run `pnpm install` to install dependencies.
 
-- `pnpm run dev` - Start development server and build assets for development.
-  The application will be available at [http://localhost:3000](http://localhost:3000) (or your configured port).
+- `pnpm run dev` - Start development server at [http://localhost:5173/](http://localhost:5173/).
+- `pnpm run build` - Build for production.
+- `pnpm run preview` - Locally preview the production build at [http://localhost:4173/](http://localhost:4173/).
 
 ### Key Dev Tools
 

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html data-theme="light">
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InsightPod</title>
+  <title>My podcasts</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <script src="https://cdn.jsdelivr.net/npm/expr-eval@2.0.2/dist/bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
@@ -18,21 +17,41 @@
 
 <body>
   <header>
-    <div class="header-image"><img src="black-microphone-inside-a-yellow-lightbulb-.svg" alt="My Podcasts" width="200" /></div>
+    <div class="header-image"></div>
     <div class="header-title">
       <h1>InsightPod</h1>
-      <h2>My Podcast Subscriptions</h2>
+      <h2></h2>
     </div>
     <nav>
       <ul>
         <li>
-          <button id="refresh-btn">
-            <span class="material-symbols-outlined">refresh</span> Refresh
+          <button id="rss-btn">
+            <span class="material-symbols-outlined">rss_feed</span>
+          </button>
+        </li>
+        <li>
+          <button id="website-btn">
+            <span class="material-symbols-outlined">captive_portal</span>
+          </button>
+        </li>
+        <li>
+          <button id="export-all-btn">
+            <span class="material-symbols-outlined">upload_file</span> Export All
+          </button>
+        </li>
+        <li>
+          <button id="export-new-btn">
+            <span class="material-symbols-outlined">upload_file</span> Export New
           </button>
         </li>
         <li>
           <button id="hide-btn">
-            <span class="material-symbols-outlined">visibility</span> Hidden
+            <span class="material-symbols-outlined">visibility_off</span> Archived
+          </button>
+        </li>
+        <li>
+          <button id="archive-all-btn">
+            <span class="material-symbols-outlined">archive</span> Archive All
           </button>
         </li>
         <li>
@@ -42,23 +61,9 @@
     </nav>
   </header>
   <main>
-    <table id="data" class="csv striped"></table>
+    <table id="data" class="feed striped"></table>
   </main>
-  <footer>
-    <nav>
-      <ul style="align-items:flex-start">
-        <li>
-          <a href="https://lists.pocketcasts.com/b7631bc7-eb07-4aaf-adab-2698b647c8a4" target="_blank">
-            <img src="pocketcastLogo.jpg" alt="Website" width="45" />
-          </a>
-        </li>
-        <li>
-          <input id="loadOpml" style="padding: 0;" type="file" accept="text/xml" />
-        </li>
-      </ul>
-    </nav>
-  </footer>
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="/feed/feed_main.js"></script>
   <noscript> This website requires JavaScript to function properly. Please enable JavaScript to continue. </noscript>
 </body>
 

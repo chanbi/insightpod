@@ -1,4 +1,7 @@
-function fetchPodcastFeed(feedUrl) {
+import { escapeAmp, escapeCdata } from '@scripts/utils'
+import { populateAlert } from '@scripts/dom'
+
+export function fetchPodcastFeed(feedUrl) {
   // Note: some RSS feeds can't be loaded in the browser due to CORS security.
   // To get around this, you can use a proxy.
   const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
@@ -19,7 +22,7 @@ function fetchPodcastFeed(feedUrl) {
     })
 }
 
-function parsePodcastFeed(text) {
+export function parsePodcastFeed(text) {
   let returnObj = { podcast: { image: {} }, episodes: [] }
 
   const parser = new DOMParser()
