@@ -21,7 +21,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
-    "https-localhost": "^4.7.1",
     "release-it": "^17.10.0",
     "release-it-pnpm": "^4.6.3",
     "should-semantic-release": "^0.3.0",
