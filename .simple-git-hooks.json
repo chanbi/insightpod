@@ -1,5 +1,5 @@
 {
   "pre-commit": "touch .commit-lock",
-  "commit-msg": "pnpm exec commitlint --verbose --edit $1",
-  "post-commit": "if [ -e .commit-lock ] ; then rm .commit-lock ; if pnpm exec should-semantic-release --verbose ; then pnpm exec release-it --ci --verbose ; fi ; fi"
+  "commit-msg": "npx commitlint --verbose --edit $1",
+  "post-commit": "if [ -e .commit-lock ] ; then rm .commit-lock ; if npx should-semantic-release --verbose ; then npx release-it --ci --verbose ; fi ; fi"
 }
