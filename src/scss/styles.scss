@@ -1,3 +1,10 @@
+// Pico classless version
+@use "@picocss/pico/scss/pico" with (
+  $enable-semantic-container: true,
+  $enable-classes: false,
+  $enable-viewport: false
+);
+
 table {
   font-size: 0.9em;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -68,7 +75,7 @@ table.striped tbody tr:nth-child(odd) td, table.striped tbody tr:nth-child(odd) 
     width: initial;
   }
 
-  table tbody tr, 
+  table tbody tr,
   table tfoot tr {
     display: flex;
     flex-wrap: wrap;
@@ -100,9 +107,9 @@ table.striped tbody tr:nth-child(odd) td, table.striped tbody tr:nth-child(odd) 
     text-wrap: nowrap;
   }
 
-  table tbody tr::before, 
+  table tbody tr::before,
   table tbody tr::after,
-  table tfoot tr::before, 
+  table tfoot tr::before,
   table tfoot tr::after {
     content: '';
     width: 100%;
@@ -149,11 +156,11 @@ table.striped tbody tr:nth-child(odd) td, table.striped tbody tr:nth-child(odd) 
     padding-left: 0;
     flex-grow: 1;
   }
-  
+
   table.feed tbody tr td[data-label="Episode"] ~ td:last-child button {
     width: 42px;
   }
-  
+
   table.csv tfoot tr td[data-label="Title"] {
     order: 0;
   }

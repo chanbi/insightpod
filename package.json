@@ -1,7 +1,7 @@
 {
   "name": "insightpod",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "Chantal Bisson",
   "license": "ISC",
   "description": "",
@@ -22,6 +22,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@picocss/pico": "^2.0.6",
     "events": "^3.3.0",
     "moment": "^2.30.1",
     "moment-duration-format": "^2.3.2",
