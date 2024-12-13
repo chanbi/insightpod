@@ -11,6 +11,12 @@ importers:
       events:
         specifier: ^3.3.0
         version: 3.3.0
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
+      moment-duration-format:
+        specifier: ^2.3.2
+        version: 2.3.2
       pouchdb-browser:
         specifier: ^9.0.0
         version: 9.0.0
@@ -1575,6 +1581,12 @@ packages:
 
   mlly@1.7.3:
     resolution: {integrity: sha512-xUsx5n/mN0uQf4V548PKQ+YShA4/IW0KI1dZhrNrPCLG+xizETbHTkOa1f8/xut9JRPp8kQuMnz0oqwkTiLo/A==}
+
+  moment-duration-format@2.3.2:
+    resolution: {integrity: sha512-cBMXjSW+fjOb4tyaVHuaVE/A5TqkukDWiOfxxAjY+PEqmmBQlLwn+8OzwPiG3brouXKY5Un4pBjAeB6UToXHaQ==}
+
+  moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -3667,6 +3679,10 @@ snapshots:
       pathe: 1.1.2
       pkg-types: 1.2.1
       ufo: 1.5.4
+
+  moment-duration-format@2.3.2: {}
+
+  moment@2.30.1: {}
 
   mri@1.2.0: {}
 

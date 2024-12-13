@@ -1,8 +1,14 @@
+import moment from 'moment'
+import momentDurationFormatSetup from 'moment-duration-format'
 import { openPodcastsDB, getPodcastFromDB, savePodcastToDB } from '@scripts/db'
 import { setButtonOnClick, setButtonStyle, populateHtmlTable, setInputOnInput, redrawHtmlTableData, createButtonElement, redrawHtmlTableFooter, redrawHtmlTableBody, populatePodcastHeader } from '@scripts/dom'
 import { customDurationTemplate, countUnarchiveEpisodes, calculateTotalTimeUnarchiveEpisodes, getSortedEpisodes, filterEpisodesByTitle, countArchiveEpisodes, archiveAllEpisodes, exportNewEpisodes, exportAllEpisodes } from '@scripts/features'
 import { fetchPodcastFeed, parsePodcastFeed } from '@scripts/feed'
 import { mergeArrays } from '@scripts/utils'
+
+momentDurationFormatSetup(moment)
+typeof moment.duration.fn.format === 'function'
+typeof moment.duration.format === 'function'
 
 const db = openPodcastsDB()
 const podcastId = new URLSearchParams(window.location.search).get('id')

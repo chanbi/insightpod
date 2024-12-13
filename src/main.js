@@ -1,3 +1,5 @@
+import moment from 'moment'
+import momentDurationFormatSetup from 'moment-duration-format'
 import { openPodcastsDB, getAllPodcastsFromDB, savePodcastsToDB } from '@scripts/db'
 import { setButtonOnClick, setButtonStyle, populateHtmlTable, setActiveFilters, filterTable, setInputOnInput, setInputOnChange, redrawHtmlTableData, createAnchorElement, createButtonElement, redrawHtmlTableFooter, redrawHtmlTableBody, createImageElement, getUniqueBackgroundColors } from '@scripts/dom'
 import { filterPodcastsByTitle, customDurationTemplate, countUnarchiveEpisodes, calculateTotalTimeUnarchiveEpisodes, countUnarchiveEpisodesBetweenDurations, getSortedEpisodes } from '@scripts/features'
@@ -5,6 +7,10 @@ import { readFile, parseOpmlPodcastList } from '@scripts/opml'
 import { applyColorScale } from '@scripts/color'
 import { fetchPodcastFeed, parsePodcastFeed } from '@scripts/feed'
 import { mergeArrays } from '@scripts/utils'
+
+momentDurationFormatSetup(moment)
+typeof moment.duration.fn.format === 'function'
+typeof moment.duration.format === 'function'
 
 const db = openPodcastsDB()
 let podcasts = []

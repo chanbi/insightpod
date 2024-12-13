@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { escapeAmp, escapeCdata } from '@scripts/utils'
 import { populateAlert } from '@scripts/dom'
 
